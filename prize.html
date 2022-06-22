@@ -1,0 +1,92 @@
+<html>
+
+<head>
+	<meta charset="utf-8"/>
+	<title>抽獎</title>
+	<style type="text/css">
+	.head{
+		background-color: rgb(215, 233, 245); color: rgb(14, 59, 97); font-weight: bold; font-size: 60px;
+		text-align: center; padding: 10px;
+	}
+	.content{
+		width: 1000px; margin-left: auto; margin-right: auto;
+	}
+	.box{
+		width: 280px; padding: 10px; margin: 10px;
+		display: inline-block; vertical-align: top;
+		text-align: center; height: 150px; line-height: 30px;
+	}
+	.title{font-weight: bold; font-size: 30px;}
+
+	</style>
+
+</head>
+
+<body style="margin: 0px; background-color: rgb(233, 220, 241);">
+	<div class="head">抽獎</div>
+	<div class="content">
+		
+		<div class="title">學號</div>
+        <span class="title"><input type="text" id="student"></input></span>
+		<button onclick="cal()">開始抽獎</button>
+		<div class="box"></div>
+		
+		<div class="title">抽獎結果</div>
+		<output type="text" id="result"></output>
+
+	</div>
+</body>
+</html>
+<script >
+             
+    var lec = 1;
+    var game = 1;
+    var all = ["1", "2", "3"];
+
+    function cal() {
+        student = document.getElementById("student").value;
+        result = document.getElementById("result").value;
+       
+
+        if ( all.includes(student) ) {
+            all.shift(student);
+            var prize = Math.floor(Math.random*3);
+
+            if (prize = 1){
+                if (game > 0){
+                    var results = 'game';
+                    game -= 1;
+                    break;
+                }
+                else{
+                    var prize = Math.floor(Math.random*3);                
+                }
+            }
+            if (prize = 2){
+                if (lec > 0){
+                    var results = 'lecture';
+                    lec -= 1;
+                    
+                }
+                else{
+                    var prize = Math.floor(Math.random*3);
+                    
+                }
+            }
+            if (prize != 1 & prize != 2){
+                var results = 'nothing';
+                
+            }
+            document.getElementById("result").value = results;
+            return all;
+        } 
+    }
+
+
+
+
+
+</script>
+
+
+
